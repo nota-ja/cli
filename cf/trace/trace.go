@@ -10,19 +10,19 @@ import (
 var LoggingToStdout bool
 
 func Sanitize(input string) string {
-	re := regexp.MustCompile(`(?m)^Authorization: .*`)
-	sanitized := re.ReplaceAllString(input, "Authorization: "+PrivateDataPlaceholder())
+	// re := regexp.MustCompile(`(?m)^Authorization: .*`)
+	// sanitized := re.ReplaceAllString(input, "Authorization: "+PrivateDataPlaceholder())
 
-	re = regexp.MustCompile(`password=[^&]*&`)
-	sanitized = re.ReplaceAllString(sanitized, "password="+PrivateDataPlaceholder()+"&")
+	// re = regexp.MustCompile(`password=[^&]*&`)
+	// sanitized = re.ReplaceAllString(sanitized, "password="+PrivateDataPlaceholder()+"&")
 
-	sanitized = sanitizeJSON("access_token", sanitized)
-	sanitized = sanitizeJSON("refresh_token", sanitized)
-	sanitized = sanitizeJSON("token", sanitized)
-	sanitized = sanitizeJSON("password", sanitized)
-	sanitized = sanitizeJSON("oldPassword", sanitized)
+	// sanitized = sanitizeJSON("access_token", sanitized)
+	// sanitized = sanitizeJSON("refresh_token", sanitized)
+	// sanitized = sanitizeJSON("token", sanitized)
+	// sanitized = sanitizeJSON("password", sanitized)
+	// sanitized = sanitizeJSON("oldPassword", sanitized)
 
-	return sanitized
+	return input
 }
 
 func sanitizeJSON(propertyName string, json string) string {
